@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <style>
+        @font-face {
+            font-family: startguard;
+            src: url('./starguard.otf');
+        }
+        /* Set the video to take up the full width and height of the page */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            font-family: startguard;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+        }
+
+        /* Add some styling to the text */
+        .text {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 10rem;
+            font-weight: bold;
+            text-align: center;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Add the video element and set the source to your video file -->
+    <img src="./bg.gif" alt="bg" />
+    <!-- Add the text element and add your text inside it -->
+    <div class="text">18h 190m</div>
+</body>
+
+</html>
