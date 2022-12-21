@@ -39,22 +39,34 @@ async function getAuthToken() {
   return page.evaluate(() => localStorage.getItem("access_token"));
 }
 async function getData(token) {
-  let res = await axios.get(
-    "https://kevit.keka.com/k/attendance/api/mytime/attendance/summary",
-    {
-      headers: {
-        authorization: `Bearer ${config.authToken}`
-      }
-    }
-  );
-  if (res.status !== 200) {
+  let res
+  try {
     res = await axios.get(
-      "https://kevit.keka.com/k/attendance/api/mytime/attendance/summary",
-      {
-        headers: {
-          authorization: `Bearer ${token}`
+        "https://kevit.keka.com/k/attendance/api/mytime/attendance/summary",
+        {
+          headers: {
+            authorization: `Bearer ${config.authToken}`
+          }
         }
-      }
+    );
+    if (res.status !== 200) {
+      res = await axios.get(
+          "https://kevit.keka.com/k/attendance/api/mytime/attendance/summary",
+          {
+            headers: {
+              authorization: `Bearer ${token}`
+            }
+          }
+      );
+    }
+  } catch(err) {
+    res = await axios.get(
+        "https://kevit.keka.com/k/attendance/api/mytime/attendance/summary",
+        {
+          headers: {
+            authorization: `Bearer ${token}`
+          }
+        }
     );
   }
   return res?.data;
