@@ -14,7 +14,7 @@ const config = {
 }
 
 async function getAuthToken() {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto("https://kevit.keka.com/#/me/attendance/logs");
   await page.waitForSelector(
